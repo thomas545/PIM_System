@@ -1,0 +1,4 @@
+Django==2.1.7
+django-bootstrap4==0.0.8
+djangorestframework==3.9.3
+pytz==2019.1

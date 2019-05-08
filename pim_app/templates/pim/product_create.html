@@ -1,0 +1,16 @@
+
+{% extends "base.html" %}
+{% load bootstrap4 %}
+{% block content %}
+  <h1 class="my-3 text-center"> Create a New Product</h1><hr>
+  <form action="." method="post">
+    {% csrf_token %}
+    {% bootstrap_form form %}
+    {% buttons %}
+        <button type="submit" class="btn btn-success">Create</button>
+        <a class="btn btn-danger" href="/">Cansel</a>
+    {% endbuttons %}
+
+  </form>
+
+{% endblock %}

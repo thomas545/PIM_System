@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+  <h1 class="my-3 text-center">Categories</h1>
+  <a class="btn btn-primary" href="{% url 'pim:category_create' %}">Create A New Category</a>
+  <hr>
+
+  <ul class="list-group">
+    {% for category in object_list %}
+      <li class="list-group-item" style="width: 40%;"><a href="{{category.get_absolute_url}}">{{category.name}}</a></li>
+    {% endfor %}
+  </ul>
+
+
+{% endblock %}
