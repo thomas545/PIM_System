@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.1/ref/settings/
 """
 
+from .aws.conf import *
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -40,6 +41,7 @@ INSTALLED_APPS = [
     'bootstrap4',
     'rest_framework',
     'pim_app',
+    'storages',
 ]
 
 MIDDLEWARE = [

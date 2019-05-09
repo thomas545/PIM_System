@@ -26,6 +26,13 @@ class ProductCreateView(CreateView):
     template_name = 'pim/product_create.html'
     success_url = '/'
 
+# Product UpdateView
+class ProductUpdateView(UpdateView):
+    queryset = Product.objects.all()
+    form_class = ProductForm
+    template_name = 'pim/product_update.html'
+    # success_url = '/'
+
 
 # ProductDeleteView
 class ProductDeleteView(DeleteView):
@@ -34,7 +41,7 @@ class ProductDeleteView(DeleteView):
     success_url = reverse_lazy('category_detail')
 
 
-# Display product list inside category detail 
+# Display product list inside category detail
 def product_list(request, pk):
     categories = Category.objects.all()
     product = Product.objects.all()
@@ -43,7 +50,7 @@ def product_list(request, pk):
     products = product.filter(categories=category)
 
     # Pagination
-    paginator = Paginator(products, 10) # Show 25 contacts per page
+    paginator = Paginator(products, 10) 
     page = request.GET.get('page')
     products = paginator.get_page(page)
 

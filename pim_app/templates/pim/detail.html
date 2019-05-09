@@ -20,7 +20,10 @@
           <td>{{product.product_Code}}</td>
           <td>{{product.name}}</td>
           <td>{{product.price}}</td>
-          <td> <a class="btn btn-danger" href="{% url 'pim:product_delete' pk=product.pk %}">Delete</a> </td>
+          <td>
+            <a class="btn btn-primary btn-sm" href="{% url 'pim:product_update' pk=product.pk %}">Update</a>
+            <a class="btn btn-danger btn-sm" href="{% url 'pim:product_delete' pk=product.pk %}">Delete</a>
+           </td>
         </tr>
       </tbody>
     {% empty %}
