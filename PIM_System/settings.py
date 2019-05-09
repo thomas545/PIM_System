@@ -28,6 +28,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+# for headers in Angular
+CORS_ORIGIN_WHITELIST = ('localhost:4200')
 
 # Application definition
 
@@ -42,6 +44,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'pim_app',
     'storages',
+    'corsheaders', # for headers in Angular
 ]
 
 MIDDLEWARE = [
@@ -52,6 +55,9 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    # for headers in Angular 
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
 ]
 
 ROOT_URLCONF = 'PIM_System.urls'

@@ -1,18 +1,18 @@
 from rest_framework import serializers
 from .models import Category, Product
 # Create your serializers here.
-# HyperlinkedModelSerializer, ModelSerializer
-class CategorySerializer(serializers.HyperlinkedModelSerializer):
+
+class CategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = Category
-        fields = ['name', 'categories']
+        fields = ['id', 'name']
 
 
-class ProductSerializer(serializers.HyperlinkedModelSerializer):
+class ProductSerializer(serializers.ModelSerializer):
     categories = CategorySerializer(many=True, required=False)
     class Meta:
         model = Product
-        fields = ['name', 'product_Code', 'price', 'quantity', 'categories']
+        fields = ['id', 'name', 'product_Code', 'price', 'quantity', 'categories']
 
     def create(self, validated_data):
         category_data = validated_data.pop('categories')
