@@ -14,6 +14,7 @@ class CategoryListView(ListView):
     template_name = 'pim/list.html'
 
 
+
 # CategoryCreateView
 class CategoryCreateView(CreateView):
     form_class = CategoryForm
@@ -31,7 +32,7 @@ class ProductUpdateView(UpdateView):
     queryset = Product.objects.all()
     form_class = ProductForm
     template_name = 'pim/product_update.html'
-    # success_url = '/'
+    success_url = '/'
 
 
 # ProductDeleteView
@@ -50,7 +51,7 @@ def product_list(request, pk):
     products = product.filter(categories=category)
 
     # Pagination
-    paginator = Paginator(products, 10) 
+    paginator = Paginator(products, 7)
     page = request.GET.get('page')
     products = paginator.get_page(page)
 
