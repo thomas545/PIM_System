@@ -11,7 +11,10 @@
         <th scope="col">Product Code</th>
         <th scope="col">Product Name</th>
         <th scope="col">Product Price</th>
-        <th scope="col">Deletion</th>
+        <th scope="col">
+          Deleting
+        </th>
+        <th scope="col">Updating</th>
       </tr>
     </thead>
     {% for product in products %}
@@ -21,9 +24,17 @@
           <td>{{product.name}}</td>
           <td>{{product.price}}</td>
           <td>
+            <form action="" method="post">
+              {% csrf_token %}
+              <input id="{{product.id}}" type="checkbox" name='id' value='{{product.id}}'/>
+              <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+            </form>
+          </td>
+          <td>
             <a class="btn btn-primary btn-sm" href="{% url 'pim:product_update' pk=product.pk %}">Update</a>
-            <a class="btn btn-danger btn-sm" href="{% url 'pim:product_delete' pk=product.pk %}">Delete</a>
+            <!-- <a class="btn btn-danger btn-sm" href="{% url 'pim:product_delete' pk=product.pk %}">Delete</a> -->
            </td>
+
         </tr>
       </tbody>
     {% empty %}

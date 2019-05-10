@@ -39,7 +39,7 @@ class ProductUpdateView(UpdateView):
 class ProductDeleteView(DeleteView):
     model = Product
     template_name = 'pim/product_delete.html'
-    success_url = reverse_lazy('category_detail')
+    success_url = '/'
 
 
 # Display product list inside category detail
@@ -54,6 +54,13 @@ def product_list(request, pk):
     paginator = Paginator(products, 7)
     page = request.GET.get('page')
     products = paginator.get_page(page)
+
+    
+    if request.method == 'POST':
+        # id = request.POST.get('id')
+        # id.delete()
+        # print(id)
+        Product.objects.filter(id__in=request.POST.getlist('id')).delete()
 
     context = {
         'category': category,

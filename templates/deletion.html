@@ -1,0 +1,10 @@
+<form action="." method="POST">
+    {% csrf_token %}
+
+
+      <label for="{{product.id}}">
+      <input id="{{product.id}}" type="checkbox" name='products' value='{{product.id}}'/>
+        {{product.name}}
+      </label><br>
+    <button type="submit" class="btn btn-success">delete</button>
+  </form>
